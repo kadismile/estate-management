@@ -1,0 +1,27 @@
+{
+  "name": "Express_Backend_Application",
+  "version": "1.0.0",
+  "description": "Application To Manage An Estate",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "Kadismile | Chibuzc",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.4.2",
+    "randomstring": "^1.1.5"
+  }
+}
