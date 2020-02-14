@@ -1,0 +1,5 @@
+2020-02-14 02:28:45.600 WAT [63958] LOG:  listening on IPv6 address "::1", port 5432
+2020-02-14 02:28:45.601 WAT [63958] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-02-14 02:28:45.601 WAT [63958] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-02-14 02:28:45.612 WAT [63959] LOG:  database system was shut down at 2020-02-14 02:24:04 WAT
+2020-02-14 02:28:45.616 WAT [63958] LOG:  database system is ready to accept connections

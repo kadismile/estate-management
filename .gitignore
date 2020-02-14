@@ -2,3 +2,5 @@
 .env
 .idea
 /dist
+config.ts
+/postgres
