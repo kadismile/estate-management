@@ -2,19 +2,22 @@
   "name": "Express_Backend_Application",
   "version": "1.0.0",
   "description": "Application To Manage An Estate",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
     "start": "NODE_ENV=production node server",
-    "dev": "nodemon server",
+    "dev": "tsc && nodemon dist/server.js",
     "test": "mocha"
   },
   "keywords": [],
   "author": "Kadismile | Chibuzc",
   "license": "MIT",
   "devDependencies": {
+    "@types/express": "^4.17.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "tslint": "^6.0.0",
+    "typescript": "^3.7.5"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
