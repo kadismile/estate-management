@@ -1,18 +1,15 @@
 const Sequelize = require('sequelize');
-require('dotenv').config();
-
-
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
+  process.env.DATABASE,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,
   {
     dialect: 'postgres',
   },
 );
 const models = {
   User: sequelize.import('./user'),
-  Message: sequelize.import('./message'),
+  EstateAdmins: sequelize.import('./EstateAdmins'),
 };
 Object.keys(models).forEach(key => {
   if ('associate' in models[key]) {
