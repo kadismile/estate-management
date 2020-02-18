@@ -1,15 +1,21 @@
-const Sequelize = require('sequelize');
+import { DbInterface } from "../types/DbInterface";
+import Sequelize from 'sequelize';
+import {EstateAdminFactory} from './EstateAdmins'
+
 const sequelize = new Sequelize(
-  process.env.DATABASE,
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS,
   {
     dialect: 'postgres',
   },
 );
-const models = {
-  User: sequelize.import('./user'),
-  EstateAdmins: sequelize.import('./EstateAdmins'),
+const models : DbInterface =  {
+  // User: sequelize.import('./user'),
+  sequelize,
+  Sequelize,
+  // EstateAdmins: sequelize.import('./EstateAdmins')(sequelize, Sequelize),
+    EstateAdmins: EstateAdminFactory(sequelize, Sequelize)
 };
 Object.keys(models).forEach(key => {
   if ('associate' in models[key]) {

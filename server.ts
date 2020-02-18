@@ -17,7 +17,12 @@ app.get('/', (req: Request, res: Response) => {
   res.send('ci with travis');
 });
 
-const server = sequelize.sync().then(() => {
+const eraseDatabaseOnSync = true; 
+
+const server = sequelize.sync( {force: eraseDatabaseOnSync }).then(() => {
+  // if (eraseDatabaseOnSync) {
+  //   // createUsersWithMessages();
+  // }
   app.listen(5000, () => {
     console.log('App running on port 5000');
   });
