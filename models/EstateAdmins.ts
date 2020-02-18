@@ -1,5 +1,5 @@
 import * as Sequelize from "sequelize";
-import { SequelizeAttributes } from '../types/sequelizeAttributes';
+import { SequelizeAttributes } from "../types/sequelizeAttributes";
 import {
   EstateAdminInstance,
   EstateAdminAttributes
@@ -8,7 +8,7 @@ export const EstateAdminFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
 ): Sequelize.Model<EstateAdminInstance, EstateAdminAttributes> => {
-  const attributes : SequelizeAttributes<EstateAdminAttributes> = {
+  const attributes: SequelizeAttributes<EstateAdminAttributes> = {
     name: {
       type: DataTypes.STRING
     },
@@ -32,7 +32,7 @@ export const EstateAdminFactory = (
     estateType: {
       type: DataTypes.STRING
     }
-  }
+  };
   const EstateAdmin = sequelize.define<
     EstateAdminInstance,
     EstateAdminAttributes
@@ -42,4 +42,3 @@ export const EstateAdminFactory = (
 };*/
   return EstateAdmin;
 };
-// export default estateAdmin;
