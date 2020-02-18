@@ -2,7 +2,7 @@ import {Response} from 'express'
 
 const ErrorResponse = require('../utils/errorResponse');
 
-const errorHandler = (err: ErrorResponse, res: Response) => {
+const errorHandler = (err = ErrorResponse, res: Response) => {
     let error = {...err};
     error.message = err.message;
 
