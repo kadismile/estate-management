@@ -1,20 +1,15 @@
-const asyncHandler = require('../middleware/async');
-import { Request, Response, NextFunction } from 'express'
-import models from '../models/index'
+import models from "../models";
+const errorHandler = require('../utils/errors');
+import { Request, Response } from 'express'
 
-/*exports.createEstateAdmins = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).json({
-    name: "ibrahim",
-    age: 40,
-  })
-});*/
-
-exports.createEstateAdmins = asyncHandler(async (req:Request, res:Response, next:NextFunction) => {
-  console.log(req.body);
-  const estateAdmin = await models.EstateAdmins.create(req.body);
-  console.log(estateAdmin);
-  res.status(201).json({
-    success: true,
-    data: req.body
-  });
-});
+exports.createEstateAdmins = async (req:Request, res:Response) => {
+  try {
+    const estateAdmin = await models.EstateAdmins.create(req.body);
+      res.status(201).json({
+          success: true,
+          data: estateAdmin
+      });
+  } catch (e) {
+    errorHandler(e,res)
+  }
+};
