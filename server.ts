@@ -1,7 +1,6 @@
 require('dotenv').config();
 import express, { Request, Response } from 'express'
-const errorHandler = require('./middleware/errors');
-import models, { sequelize } from './models';
+import { sequelize } from './models';
 
 const app = express();
 //Body parser
@@ -11,7 +10,6 @@ app.use(express.json());
 let { estateAdmins } = require('./routes');
 
 app.use('/api/v1/estate-admin', estateAdmins);
-app.use(errorHandler);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('ci with travis');
