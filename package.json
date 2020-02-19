@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server",
     "dev": "tsc && nodemon dist/server.js",
-    "test": "mocha -r ts-node/register test/index-spec.ts"
+    "test": "mocha --exit -r ts-node/register test/index-spec.ts"
   },
   "keywords": [],
   "author": "Kadismile | Chibuzc",
