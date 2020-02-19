@@ -1,11 +1,13 @@
 import { DbInterface } from "../types/DbInterface";
 import Sequelize from "sequelize";
 import { EstateAdminFactory } from "./EstateAdmins";
+import config from "../config";
 
+const env = process.env.NODE_ENV || "development";
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
+  config[env].database,
+  config[env].username,
+  config[env].password,
   {
     dialect: "postgres"
   }

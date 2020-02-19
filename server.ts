@@ -1,6 +1,7 @@
 require('dotenv').config();
 import express, { Request, Response } from 'express'
 import { sequelize } from './models';
+import { dropDb } from './seed/dropDB';
 
 const app = express();
 //Body parser
@@ -17,13 +18,10 @@ app.get('/', (req: Request, res: Response) => {
 
 const eraseDatabaseOnSync = true; 
 
-const server = sequelize.sync( {force: eraseDatabaseOnSync }).then(() => {
-  // if (eraseDatabaseOnSync) {
-  //   // createUsersWithMessages();
-  // }
-  app.listen(5000, () => {
-    console.log('App running on port 5000');
-  });
+
+const server = app.listen(5000, () => {
+  console.log('App running on port 5000');
+  dropDb()
 });
 
 module.exports = server;
