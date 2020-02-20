@@ -21,14 +21,14 @@ describe("Describe the basic nature of what are the series of test cases here", 
         id: Math.floor(Math.random() * 100000),
         name: "johnny doslese",
         email: "johndalapo@test.com",
-        phoneNumber: "+2348097253627",
+        phoneNumber: "+2348049835094",
         address: "24 Bansxheer Avenue",
         estateType: "Block"
       })
       .then((res: any) => {
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
-        chai.expect(res.body.data.name).to.eql("john dolese"); // expression which will be true if name equal to john doe
+        chai.expect(res.body.data.name).to.eql("johnny doslese"); // expression which will be true if name equal to john doe
         done();
       })
       .catch(done);
