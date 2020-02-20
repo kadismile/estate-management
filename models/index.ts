@@ -7,7 +7,7 @@ const env = process.env.NODE_ENV || "development";
 const sequelize = new Sequelize(
   config[env].database,
   config[env].username,
-  config[env].password,
+  config[env].password || null,
   {
     // host: config[env].host ?? null,
     // port: config[env].port ?? null,
