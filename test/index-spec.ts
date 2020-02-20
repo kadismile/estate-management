@@ -19,8 +19,8 @@ describe("Describe the basic nature of what are the series of test cases here", 
       .post("/api/v1/estate-admin/create")
       .send({
         name: "john dosse",
-        email: "johndosse@test.com",
-        phoneNumber: "+2348049835094",
+        email: "johndo@test.com",
+        phoneNumber: "+2348090835094",
         address: "24 Banshee Avenue",
         estateType: "Block"
       })
