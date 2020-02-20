@@ -21,7 +21,6 @@ app.get('/', (req: Request, res: Response) => {
 
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log(`App running on port ${process.env.PORT || 5000}`);
-  // console.log('ENV', env);
   env !== 'production' ? dropDb() : console.log('prod env')
 });
 
