@@ -18,4 +18,4 @@ before_script:
   - psql -c "CREATE USER test WITH PASSWORD 'test';" -U postgres
   - psql -c "ALTER ROLE test CREATEROLE CREATEDB;" -U postgres
   - psql -c "\du;" -U postgres
-  - npm install -g sequelize-cli
+  # - npm install -g sequelize-cli
