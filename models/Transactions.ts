@@ -1,62 +1,50 @@
 import * as Sequelize from "sequelize";
 import { SequelizeAttributes } from "../types/sequelizeAttributes";
-const { SubTenantsAfterCreate } =  require('../utils/hooks');
+const { TransactionAfterCreate } =  require('../utils/hooks');
 import {
-  SubTenantInstance,
-  SubTenantAttributes
-} from "../types/subTenants";
+  TransactionInstance,
+  TransactionAttributes
+} from "../types/transactions";
 
-export const SubTenantFactory = (
+export const TransactionFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
-): Sequelize.Model<SubTenantInstance, SubTenantAttributes> => {
-  const attributes: SequelizeAttributes<SubTenantAttributes> = {
-    estateTenantId: {
+): Sequelize.Model<TransactionInstance, TransactionAttributes> => {
+  const attributes: SequelizeAttributes<TransactionAttributes> = {
+    tenantId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    name: {
+    status: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    phoneNumber: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        not: ["[a-z]", "i"]
-      }
-    },
-    tenantType: {
+    type: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      account: {
+    },
+    amount: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    outstandingAmount: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      },
-    email: {
-        type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true
-        }
-      },
-    address: {
+    },
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     },
   };
-  const SubTenant = sequelize.define<
-  SubTenantInstance,
-    SubTenantAttributes
-  >("subtenants", attributes);
-  SubTenant.associate = models => {
-    SubTenant.belongsTo(models.EstateTenants);
-  };
+  const Transaction = sequelize.define<
+  TransactionInstance,
+    TransactionAttributes
+  >("transactions", attributes);
+  // Transaction.associate = models => {
+  //   Transaction.belongsTo(models.EstateTenants);
+  // };
 
   //fire hooks
-  SubTenantsAfterCreate(SubTenant);
-  return SubTenant;
+  // TransactionAfterCreate(Transaction);
+  return Transaction;
 };

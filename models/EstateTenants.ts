@@ -55,6 +55,6 @@ export const EstateTenantFactory = (
     EstateTenant.belongsTo(models.EstateAdmins);
   };
 //fire hooks
-  EstateTenantsAfterCreate(EstateTenant);
+  // EstateTenantsAfterCreate(EstateTenant);
   return EstateTenant;
 };

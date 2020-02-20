@@ -1,16 +1,17 @@
 import * as Sequelize from "sequelize";
 import { SequelizeAttributes } from "../types/sequelizeAttributes";
+const { SubTenantsAfterCreate } =  require('../utils/hooks');
 import {
-  EstateTenantInstance,
-  EstateTenantAttributes
-} from "../types/estateTenants";
-const { EstateTenantsAfterCreate } =  require('../utils/hooks');
-export const EstateTenantFactory = (
+  SubTenantInstance,
+  SubTenantAttributes
+} from "../types/subTenants";
+
+export const SubTenantFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
-): Sequelize.Model<EstateTenantInstance, EstateTenantAttributes> => {
-  const attributes: SequelizeAttributes<EstateTenantAttributes> = {
-    estateAdminId: {
+): Sequelize.Model<SubTenantInstance, SubTenantAttributes> => {
+  const attributes: SequelizeAttributes<SubTenantAttributes> = {
+    estateTenantId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -47,14 +48,15 @@ export const EstateTenantFactory = (
       allowNull: false
     },
   };
-  const EstateTenant = sequelize.define<
-  EstateTenantInstance,
-    EstateTenantAttributes
-  >("tenants", attributes);
-  EstateTenant.associate = models => {
-    EstateTenant.belongsTo(models.EstateAdmins);
+  const SubTenant = sequelize.define<
+  SubTenantInstance,
+    SubTenantAttributes
+  >("subtenants", attributes);
+  SubTenant.associate = models => {
+    SubTenant.belongsTo(models.EstateTenants);
   };
-//fire hooks
-  EstateTenantsAfterCreate(EstateTenant);
-  return EstateTenant;
+
+  //fire hooks
+  // SubTenantsAfterCreate(SubTenant);
+  return SubTenant;
 };
