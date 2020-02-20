@@ -33,10 +33,10 @@ export const EstateAdminFactory = (
       type: DataTypes.STRING
     }
   };
-  const EstateAdmin = sequelize.define<
+  const EstateAdmins = sequelize.define<
     EstateAdminInstance,
     EstateAdminAttributes
-  >("EstateAdmin", attributes);
+  >("EstateAdmins", attributes);
   
-  return EstateAdmin;
+  return EstateAdmins;
 };
