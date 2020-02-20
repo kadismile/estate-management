@@ -15,10 +15,6 @@ const sequelize = new Sequelize(
   }
 );
 
-sequelize.sync()
-  .then(() => {
-    console.log(`Database & tables created!`)
-  })
 const models: DbInterface = {
   sequelize,
   Sequelize,
