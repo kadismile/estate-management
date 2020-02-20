@@ -22,7 +22,7 @@ const eraseDatabaseOnSync = true;
 
 const server = app.listen(5000, () => {
   console.log('App running on port 5000');
-  env === 'development' ? dropDb() : console.log('not dev server')
+  env !== 'production' ? dropDb() : console.log('prod env')
 });
 
 module.exports = server;

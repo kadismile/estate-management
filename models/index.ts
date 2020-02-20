@@ -9,6 +9,8 @@ const sequelize = new Sequelize(
   config[env].username,
   config[env].password,
   {
+    // host: config[env].host ?? null,
+    // port: config[env].port ?? null,
     dialect: "postgres"
   }
 );
