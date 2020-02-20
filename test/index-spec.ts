@@ -12,24 +12,21 @@ describe("test", () => {
   });
 });
 
-
 describe("Describe the basic nature of what are the series of test cases here", () => {
   it("Creates an estate admin", done => {
     chai
       .request(server)
       .post("/api/v1/estate-admin/create")
       .send({
-        name: "john dosse",
-        email: "johndosse@test.com",
-        phoneNumber: "+2348049835094",
-        address: "24 Banshee Avenue",
+        name: "john dolese",
+        email: "johndolese@test.com",
+        phoneNumber: "+23480908352824",
+        address: "24 Bansheer Avenue",
         estateType: "Block"
       })
       .then((res: any) => {
-        console.log(res);
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
-
         chai.expect(res.body.data.name).to.eql("john dosse"); // expression which will be true if name equal to john doe
         done();
       })

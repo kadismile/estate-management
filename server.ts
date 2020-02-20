@@ -17,7 +17,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send('ci with travis');
 });
 
-const eraseDatabaseOnSync = true; 
 
 
 const server = app.listen(process.env.PORT || 5000, () => {
