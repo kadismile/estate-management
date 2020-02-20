@@ -1,5 +1,5 @@
 const server = require("../server");
-import { dropDb } from "../seed/dropDB";
+import { syncDb } from "../seed/dropDB";
 
 import "mocha";
 import chai, { expect, assert } from "chai";
@@ -18,7 +18,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
       .request(server)
       .post("/api/v1/estate-admin/create")
       .send({
-        id: Math.floor(Math.random() * 1000),
+        id: Math.floor(Math.random() * 100000),
         name: "john dolese",
         email: "johndolese@test.com",
         phoneNumber: "+23480908352824",
