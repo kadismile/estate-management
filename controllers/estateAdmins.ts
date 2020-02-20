@@ -10,6 +10,7 @@ exports.createEstateAdmins = async (req:Request, res:Response) => {
           data: estateAdmin
       });
   } catch (e) {
+    console.log(e)
     errorHandler(e,res)
   }
 };

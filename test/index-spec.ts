@@ -1,8 +1,36 @@
-const expect = require('chai').expect
-const server = require ('../server')
+const server = require("../server");
+import { dropDb } from "../seed/dropDB";
 
-describe('test', () => {
-  it('should return a string', () => {
-    expect('ci with travis').to.equal('ci with travis');
+import "mocha";
+import chai, { expect, assert } from "chai";
+import chaiHttp = require("chai-http");
+chai.use(chaiHttp);
+
+describe("test", () => {
+  it("should return a string", () => {
+    expect("ci with travis").to.equal("ci with travis");
+  });
+});
+
+describe("Describe the basic nature of what are the series of test cases here", () => {
+  it("Creates an estate admin", done => {
+    chai
+      .request(server)
+      .post("/api/v1/estate-admin/create")
+      .send({
+        id: Math.floor(Math.random() * 100000),
+        name: "johnny doslese",
+        email: "johndalapo@test.com",
+        phoneNumber: "+2348049835094",
+        address: "24 Bansxheer Avenue",
+        estateType: "Block"
+      })
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
+        chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
+        chai.expect(res.body.data.name).to.eql("johnny doslese"); // expression which will be true if name equal to john doe
+        done();
+      })
+      .catch(done);
   });
 });
