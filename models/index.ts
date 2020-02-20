@@ -14,6 +14,11 @@ const sequelize = new Sequelize(
     dialect: "postgres"
   }
 );
+
+sequelize.sync({ force: true })
+  .then(() => {
+    console.log(`Database & tables created!`)
+  })
 const models: DbInterface = {
   sequelize,
   Sequelize,
