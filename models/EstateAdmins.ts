@@ -36,7 +36,7 @@ export const EstateAdminFactory = (
   const EstateAdmins = sequelize.define<
     EstateAdminInstance,
     EstateAdminAttributes
-  >("estate_admins", attributes);
+  >("estates", attributes);
   
   return EstateAdmins;
 };

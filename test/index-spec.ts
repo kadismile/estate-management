@@ -19,17 +19,17 @@ describe("Describe the basic nature of what are the series of test cases here", 
       .request(server)
       .post("/api/v1/estate-admin/create")
       .send({
-        name: "john doss",
-        email: "johndoss@test.com",
-        phoneNumber: "+2348033434094",
-        address: "Banshee Avenue",
+        name: "john dosse",
+        email: "johndosse@test.com",
+        phoneNumber: "+2348049834094",
+        address: "24 Banshee Avenue",
         estateType: "Block"
       })
       .then((res: any) => {
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
 
-        chai.expect(res.body.data.name).to.eql("john doe"); // expression which will be true if name equal to john doe
+        chai.expect(res.body.data.name).to.eql("john dosse"); // expression which will be true if name equal to john doe
         done();
       })
       .catch(done);
