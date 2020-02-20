@@ -19,10 +19,10 @@ describe("Describe the basic nature of what are the series of test cases here", 
       .post("/api/v1/estate-admin/create")
       .send({
         id: Math.floor(Math.random() * 100000),
-        name: "john dolese",
-        email: "johndolese@test.com",
-        phoneNumber: "+23480908352824",
-        address: "24 Bansheer Avenue",
+        name: "johnny doslese",
+        email: "johndalapo@test.com",
+        phoneNumber: "+2348097253627",
+        address: "24 Bansxheer Avenue",
         estateType: "Block"
       })
       .then((res: any) => {
