@@ -1,5 +1,5 @@
 const server = require("../server");
-import { dropDb } from "../seed/dropDB";
+import { syncDb } from "../seed/dropDB";
 
 import "mocha";
 import chai, { expect, assert } from "chai";
@@ -11,7 +11,6 @@ describe("test", () => {
     expect("ci with travis").to.equal("ci with travis");
   });
 });
-
 
 describe("Describe the basic nature of what are the series of test cases here", () => {
   it("Creates an estate admin", done => {
@@ -26,10 +25,8 @@ describe("Describe the basic nature of what are the series of test cases here", 
         estateType: "Block"
       })
       .then((res: any) => {
-        console.log(res);
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
-
         chai.expect(res.body.data.name).to.eql("john dosse"); // expression which will be true if name equal to john doe
         done();
       })

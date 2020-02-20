@@ -1,7 +1,7 @@
 require('dotenv').config();
 import express, { Request, Response } from 'express'
 import { sequelize } from './models';
-import { dropDb } from './seed/dropDB';
+import { syncDb } from './seed/dropDB';
 const env = process.env.NODE_ENV || "development";
 
 const app = express();
@@ -17,13 +17,12 @@ app.get('/', (req: Request, res: Response) => {
   res.send('ci with travis');
 });
 
-const eraseDatabaseOnSync = true; 
 
 
 const server = app.listen(process.env.PORT || 5000, () => {
   console.log(`App running on port ${process.env.PORT || 5000}`);
   console.log('ENV', env);
-  env !== 'production' ? dropDb() : console.log('prod env')
+  env !== 'production' ? syncDb() : console.log('prod env')
 });
 
 module.exports = server;
