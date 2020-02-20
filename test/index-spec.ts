@@ -1,5 +1,5 @@
 const server = require("../server");
-import { syncDb } from "../seed/dropDB";
+import { dropDb } from "../seed/dropDB";
 
 import "mocha";
 import chai, { expect, assert } from "chai";

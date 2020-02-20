@@ -2,7 +2,7 @@ import { sequelize } from "../models";
 
 const eraseDatabaseOnSync = true;
 
-export const syncDb = async () => {
+export const dropDb = async () => {
     await sequelize.sync();
 }
 
