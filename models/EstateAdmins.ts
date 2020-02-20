@@ -31,12 +31,13 @@ export const EstateAdminFactory = (
     },
     estateType: {
       type: DataTypes.STRING
-    }
+    },
+    
   };
   const EstateAdmins = sequelize.define<
     EstateAdminInstance,
     EstateAdminAttributes
-  >("estates", attributes);
+  >("estates", attributes, {freezeTableName: true,});
   
   return EstateAdmins;
 };
