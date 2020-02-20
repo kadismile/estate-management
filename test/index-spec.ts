@@ -21,11 +21,12 @@ describe("Describe the basic nature of what are the series of test cases here", 
       .send({
         name: "john dosse",
         email: "johndosse@test.com",
-        phoneNumber: "+2348049834094",
+        phoneNumber: "+2348049835094",
         address: "24 Banshee Avenue",
         estateType: "Block"
       })
       .then((res: any) => {
+        console.log(res);
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
 

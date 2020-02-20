@@ -4,7 +4,7 @@ import { Request, Response } from 'express'
 
 exports.createEstateAdmins = async (req:Request, res:Response) => {
   try {
-    console.log(models.EstateAdmins);
+    // console.log(models.EstateAdmins);
     const estateAdmin = await models.EstateAdmins.create(req.body);
       res.status(201).json({
           success: true,
