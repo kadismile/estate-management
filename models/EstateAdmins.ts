@@ -14,14 +14,14 @@ export const EstateAdminFactory = (
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      // unique: true,
       validate: {
         isEmail: true
       }
     },
     phoneNumber: {
       type: DataTypes.STRING,
-      unique: true,
+      // unique: true,
       validate: {
         not: ["[a-z]", "i"]
       }
