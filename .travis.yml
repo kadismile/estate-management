@@ -16,4 +16,5 @@ env:
 before_script:
   - psql -c 'create database estateManagement;' -U postgres
   - psql -c "CREATE USER testUser WITH PASSWORD 'testUser';" -U postgres
+  - psql -c GRANT ALL PRIVILEGES ON DATABASE estateManagement TO testUser;
   - npm install -g sequelize-cli
