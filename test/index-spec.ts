@@ -16,7 +16,7 @@ describe("test", () => {
 
 describe("Describe the basic nature of what are the series of test cases here", () => {
   it("Creates an estate admin", done => {
-    let newAdmin : EstateAdminAttributes = {
+    let newAdmin: EstateAdminAttributes = {
       id: Math.floor(Math.random() * 100000),
       name: "johnny doslese",
       email: "johndalapo@test.com",
@@ -38,7 +38,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
   });
 
   it("Updates an estate admin", done => {
-    let newAdmin : EstateAdminAttributes = {
+    let newAdmin: EstateAdminAttributes = {
       name: "johnny doese",
       email: "johnpo@test.com",
       phoneNumber: "+2348049835094",
@@ -47,13 +47,13 @@ describe("Describe the basic nature of what are the series of test cases here", 
     };
     chai
       .request(server)
-      .post(`/api/v1/estate-admin/:id`)
+      .put(`/api/v1/estate-admin/:id`)
       .send(newAdmin)
-      .then(( res: any) => {
+      .then((res: any) => {
         //TODO Confirm that newAdmin.id = req.params.id
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
-        chai.expect(res.body.data).to.deep.include(newAdmin);// expression which will be true if name equal to john doe
+        chai.expect(res.body.data).to.deep.include(newAdmin); // expression which will be true if name equal to john doe
         done();
       })
       .catch(done);
@@ -63,10 +63,21 @@ describe("Describe the basic nature of what are the series of test cases here", 
     chai
       .request(server)
       .get(`/api/v1/estate-admin/:id`)
-      .then(( res: any) => {
-        //TODO Confirm that newAdmin.id = req.params.id
+      .then((res: any) => {
+        //TODO Confirm that res.body.data.id = req.params.id
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
+        done();
+      })
+      .catch(done);
+  });
+  it("Gets all estate admins ", done => {
+    chai
+      .request(server)
+      .get(`/api/v1/estate-admin`)
+      .then((res: any) => {
+        chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
+        chai.assert.isArray(res.body.data.id); // assertion expression which will be true if id exists
         done();
       })
       .catch(done);
