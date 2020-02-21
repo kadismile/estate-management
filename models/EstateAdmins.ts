@@ -1,19 +1,18 @@
 import * as Sequelize from "sequelize";
 import { SequelizeAttributes } from "../types/sequelizeAttributes";
-import {
-  EstateAdminInstance,
-  EstateAdminAttributes
-} from "../types/estateAdmin";
+import {EstateAdminInstance, EstateAdminAttributes} from "../types/estateAdmin";
 export const EstateAdminFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
 ): Sequelize.Model<EstateAdminInstance, EstateAdminAttributes> => {
   const attributes: SequelizeAttributes<EstateAdminAttributes> = {
     name: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: false,
       unique: true,
       validate: {
         isEmail: true
@@ -21,24 +20,24 @@ export const EstateAdminFactory = (
     },
     phoneNumber: {
       type: DataTypes.STRING,
+      allowNull: false,
       unique: true,
       validate: {
         not: ["[a-z]", "i"]
       }
     },
     address: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     },
     estateType: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false
     }
   };
-  const EstateAdmin = sequelize.define<
-    EstateAdminInstance,
-    EstateAdminAttributes
-  >("EstateAdmin", attributes);
-  /*EstateAdmins.associate = models => {
-  EstateAdmins.belongsTo(models.User);
-};*/
+  const EstateAdmin = sequelize.define<EstateAdminInstance, EstateAdminAttributes>("EstateAdmin", attributes);
+  EstateAdmin.associate = models => {
+    EstateAdmin.hasMany(models.Units);
+  };
   return EstateAdmin;
 };
