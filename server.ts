@@ -1,6 +1,5 @@
 require('dotenv').config();
 import express, { Request, Response } from 'express'
-import { sequelize } from './models';
 import { dropDb } from './seed/dropDB';
 const env = process.env.NODE_ENV || "development";
 

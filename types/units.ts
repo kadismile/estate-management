@@ -7,7 +7,7 @@ export interface UnitsAttributes {
     expiresAt: string;
     type: string;
     address: string;
-    tenantId: string;
+    tenantId: number;
     estateAdminId: number;
 }
 
