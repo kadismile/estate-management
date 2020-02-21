@@ -47,7 +47,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
     };
     chai
       .request(server)
-      .put(`/api/v1/estate-admin/:id`)
+      .put(`/api/v1/estate-admin/85676`)
       .send(newAdmin)
       .then((res: any) => {
         //TODO Confirm that newAdmin.id = req.params.id
@@ -62,7 +62,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
   it("Gets an estate admin by id", done => {
     chai
       .request(server)
-      .get(`/api/v1/estate-admin/:id`)
+      .get(`/api/v1/estate-admin/85676`)
       .then((res: any) => {
         //TODO Confirm that res.body.data.id = req.params.id
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
@@ -74,10 +74,10 @@ describe("Describe the basic nature of what are the series of test cases here", 
   it("Gets all estate admins ", done => {
     chai
       .request(server)
-      .get(`/api/v1/estate-admin`)
+      .get(`/api/v1/estate-admin/`)
       .then((res: any) => {
         chai.expect(res.status).to.eql(201); // expression which will be true if response status equal to 201
-        chai.assert.isArray(res.body.data.id); // assertion expression which will be true if id exists
+        chai.assert.isArray(res.body.data); // assertion expression which will be true if id exists
         done();
       })
       .catch(done);
