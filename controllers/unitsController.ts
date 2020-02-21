@@ -2,6 +2,7 @@ import models from "../models";
 
 const errorHandler = require('../utils/errors');
 import {Request, Response} from 'express'
+const { findById, findAll } =  require('../utils/helpers/query');
 
 exports.createUnits = async (req: Request, res: Response) => {
   try {
@@ -45,5 +46,25 @@ exports.getUnit = async (req: Request, res: Response) => {
       });
   } catch (e) {
     errorHandler(e, res)
+  }
+};
+
+exports.getAllUnit = async (req: Request, res: Response) => {
+  try {
+    const units = await findAll(models.Units);
+    if (units === null) {
+      res.status(404).json({
+        success: false,
+        data: "No units was found"
+      });
+    } else {
+      res.status(200).json({
+        success: true,
+        data: units
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    errorHandler(e, res);
   }
 };
