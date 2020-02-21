@@ -32,7 +32,7 @@ export const UnitsFactory = (
             allowNull: false
         }
     };
-    const Unit = sequelize.define<UnitInstance, UnitsAttributes>("Units", attributes);
+    const Unit = sequelize.define<UnitInstance, UnitsAttributes>("units", attributes);
     Unit.associate = models => {
         Unit.belongsTo(models.EstateAdmins);
     };

@@ -35,9 +35,10 @@ export const EstateAdminFactory = (
       allowNull: false
     }
   };
-  const EstateAdmin = sequelize.define<EstateAdminInstance, EstateAdminAttributes>("EstateAdmin", attributes);
+  const EstateAdmin = sequelize.define<EstateAdminInstance, EstateAdminAttributes>("estates", attributes);
   EstateAdmin.associate = models => {
     EstateAdmin.hasMany(models.Units);
   };
   return EstateAdmin;
+
 };
