@@ -4,10 +4,11 @@ const { createEstateAdmins, updateEstateAdminsById,getEstateAdminsById,getAllEst
 
 router.route('/create')
   .post(createEstateAdmins);
+
   router.route('/:id')
-  .put(updateEstateAdminsById);
-  router.route('/:id')
+  .put(updateEstateAdminsById)
   .get(getEstateAdminsById);
+  
   router.route('/')
   .get(getAllEstateAdmins);
 
