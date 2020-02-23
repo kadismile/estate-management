@@ -4,3 +4,4 @@
 /dist
 # config.ts
 /postgres
+serviceAccount.json

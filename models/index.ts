@@ -5,6 +5,7 @@ import { UnitsFactory } from "./Units";
 import config from "../config";
 
 const env = process.env.NODE_ENV || "development";
+console.log(config[env].database)
 const sequelize = new Sequelize(
   config[env].database,
   config[env].username,
