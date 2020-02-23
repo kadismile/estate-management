@@ -3,6 +3,7 @@ import Sequelize from "sequelize";
 import { EstateAdminFactory } from "./EstateAdmins";
 import { UnitsFactory } from "./Units";
 import config from "../config";
+import { EstateTenantFactory } from "./EstateTenants";
 
 const env = process.env.NODE_ENV || "development";
 console.log(config[env].database)
@@ -21,7 +22,8 @@ const models: DbInterface = {
   sequelize,
   Sequelize,
   EstateAdmins: EstateAdminFactory(sequelize, Sequelize),
-  Units: UnitsFactory(sequelize, Sequelize)
+  Units: UnitsFactory(sequelize, Sequelize),
+  EstateTenants: EstateTenantFactory(sequelize, Sequelize)
 };
 Object.keys(models).forEach(key => {
   if ("associate" in models[key]) {
