@@ -1,9 +1,9 @@
 
 import * as Sequelize from 'sequelize';
 
-export interface EstateTenantAttributes {
+export interface SubTenantAttributes {
     id?: number;
-    estateAdminId: number;
+    estateTenantId: number;
     name: string;
     phoneNumber: string;
     tenantType: string;
@@ -12,5 +12,5 @@ export interface EstateTenantAttributes {
     address: string;
   }
   
-  export interface EstateTenantInstance extends Sequelize.Instance<EstateTenantAttributes>, EstateTenantAttributes {
+  export interface SubTenantInstance extends Sequelize.Instance<SubTenantAttributes>, SubTenantAttributes {
   };
