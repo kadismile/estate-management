@@ -41,7 +41,7 @@ export const EstateAdminFactory = (
     EstateAdmin.hasMany(models.Units);
   };
   //fire hooks
-  EstateAdminAfterCreate(EstateAdmin);
+  // EstateAdminAfterCreate(EstateAdmin);
   return EstateAdmin;
 
 };

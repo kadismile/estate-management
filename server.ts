@@ -8,12 +8,15 @@ const app = express();
 app.use(express.json());
 
 //ROUTE FILES
-let { estateAdmins, units, estateTenants, visitors } = require('./routes');
+let { estateAdmins, units, estateTenants, visitors, subTenants, transactions, subTransactions } = require('./routes');
 
 app.use('/api/v1/estate-admin', estateAdmins);
 app.use('/api/v1/units', units);
 app.use('/api/v1/estate-tenants', estateTenants);
 app.use('/api/v1/visitors', visitors);
+app.use('/api/v1/sub-tenants', subTenants);
+app.use('/api/v1/transactions', transactions);
+app.use('/api/v1/sub-transactions', subTransactions);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('ci with travis');

@@ -32,3 +32,24 @@ exports.VisitorsAfterCreate = async (Model: Sequelize.Model<any, any>) => {
     await docRef.set(data.dataValues);
   });
 };
+
+exports.SubTenantsAfterCreate = async (Model: Sequelize.Model<any, any>) => {
+  Model.afterCreate(async (data, options) => {
+    let docRef = db.collection(`SubTenants`).doc(id);
+    await docRef.set(data.dataValues);
+  });
+};
+
+exports.TransactionAfterCreate = async (Model: Sequelize.Model<any, any>) => {
+  Model.afterCreate(async (data, options) => {
+    let docRef = db.collection(`Transactions`).doc(id);
+    await docRef.set(data.dataValues);
+  });
+};
+
+exports.SubTransactionAfterCreate = async (Model: Sequelize.Model<any, any>) => {
+  Model.afterCreate(async (data, options) => {
+    let docRef = db.collection(`SubTransactions`).doc(id);
+    await docRef.set(data.dataValues);
+  });
+};
