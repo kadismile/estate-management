@@ -1,5 +1,3 @@
-import {EstateAdminAttributes, EstateAdminInstance} from "../../types/estateAdmin";
-import models from "../../models";
 import * as Sequelize from "sequelize";
 import {Request} from "express";
 

@@ -1,6 +1,7 @@
 import * as Sequelize from "sequelize";
 import { SequelizeAttributes } from "../types/sequelizeAttributes";
 import {EstateAdminInstance, EstateAdminAttributes} from "../types/estateAdmin";
+const { EstateAdminAfterCreate } =  require('../utils/hooks');
 export const EstateAdminFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
@@ -39,6 +40,8 @@ export const EstateAdminFactory = (
   EstateAdmin.associate = models => {
     EstateAdmin.hasMany(models.Units);
   };
+  //fire hooks
+  EstateAdminAfterCreate(EstateAdmin);
   return EstateAdmin;
 
 };

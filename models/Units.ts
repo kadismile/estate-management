@@ -1,6 +1,7 @@
 import * as Sequelize from "sequelize";
 import {SequelizeAttributes} from "../types/sequelizeAttributes";
 import {UnitInstance, UnitsAttributes} from "../types/units";
+const { UnitsAfterCreate } =  require('../utils/hooks');
 
 export const UnitsFactory = (
   sequelize: Sequelize.Sequelize,
@@ -36,5 +37,7 @@ export const UnitsFactory = (
   Unit.associate = models => {
     Unit.belongsTo(models.EstateAdmins);
   };
+  //fire hooks
+  UnitsAfterCreate(Unit);
   return Unit;
 };
