@@ -16,3 +16,10 @@ exports.UnitsAfterCreate = async (Model: Sequelize.Model<any, any>) => {
     await docRef.set(data.dataValues);
   });
 };
+
+exports.EstateTenantsAfterCreate = async (Model: Sequelize.Model<any, any>) => {
+  Model.afterCreate(async (data, options) => {
+    let docRef = db.collection(`EstateTenants`).doc(`${data.name}`);
+    await docRef.set(data.dataValues);
+  });
+};

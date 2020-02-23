@@ -4,6 +4,7 @@ import {
   EstateTenantInstance,
   EstateTenantAttributes
 } from "../types/estateTenants";
+const { EstateTenantsAfterCreate } =  require('../utils/hooks');
 export const EstateTenantFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
@@ -53,5 +54,7 @@ export const EstateTenantFactory = (
   EstateTenant.associate = models => {
     EstateTenant.belongsTo(models.EstateAdmins);
   };
+//fire hooks
+  EstateTenantsAfterCreate(EstateTenant);
   return EstateTenant;
 };
