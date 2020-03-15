@@ -5,6 +5,7 @@ const { findById, findAll, updateById } =  require('../utils/helpers/query');
 
 exports.createTransaction = async (req: Request, res: Response) => {
   try {
+    console.log("I ENTERED HERE OOOOOO");
     const transaction = await models.Transactions.create(req.body);
     res.status(201).json({
       success: true,

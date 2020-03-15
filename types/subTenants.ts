@@ -10,6 +10,9 @@ export interface SubTenantAttributes {
     account: number;
     email: string;
     address: string;
+    roles: string[];
+    password: string,
+    model: string
   }
   
   export interface SubTenantInstance extends Sequelize.Instance<SubTenantAttributes>, SubTenantAttributes {

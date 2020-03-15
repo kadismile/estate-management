@@ -10,6 +10,9 @@ export interface EstateTenantAttributes {
     account: number;
     email: string;
     address: string;
+    roles: string[];
+    password: string,
+    model: string
   }
   
   export interface EstateTenantInstance extends Sequelize.Instance<EstateTenantAttributes>, EstateTenantAttributes {
