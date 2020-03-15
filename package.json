@@ -5,7 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "NODE_ENV=production node server",
-    "dev": "tsc && nodemon dist/server.js",
+    "dev": "nodemon --watch '*.ts' --exec 'ts-node' server.ts",
     "test": "mocha --timeout 10000 --exit -r ts-node/register test/index-spec.ts"
   },
   "keywords": [],
@@ -34,6 +34,7 @@
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.4",
+    "crypto": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^7.9.0",

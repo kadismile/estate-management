@@ -12,6 +12,16 @@ exports.findById = async (Model: Sequelize.Model<any, any> , id: string) => {
   return null;
 };
 
+exports.findByEmail = async (Model: Sequelize.Model<any, any> , email: string) => {
+  const resource = await Model.findOne({
+    where: { email: email }
+  });
+  if (resource) {
+    return resource;
+  }
+  return null;
+};
+
 exports.findAll = async (Model : Sequelize.Model<any, any> ) => {
   const resource = await Model.findAll();
   if (resource) {
@@ -26,3 +36,5 @@ exports.updateById = async (Model: Sequelize.Model<any, any> , req: Request ) =>
   });
   return updatedDoc[1][0] !== null ? updatedDoc[1][0] : null;
 };
+
+

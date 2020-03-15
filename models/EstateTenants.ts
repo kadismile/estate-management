@@ -4,7 +4,7 @@ import {
   EstateTenantInstance,
   EstateTenantAttributes
 } from "../types/estateTenants";
-const { EstateTenantsAfterCreate } =  require('../utils/hooks');
+const { EstateTenantsBeforeCreate } =  require('../utils/hooks');
 export const EstateTenantFactory = (
   sequelize: Sequelize.Sequelize,
   DataTypes: Sequelize.DataTypes
@@ -46,6 +46,32 @@ export const EstateTenantFactory = (
       type: DataTypes.STRING,
       allowNull: false
     },
+    roles: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: ["estateTenant"],
+      validate: {
+        isValidArray: function(value) {
+          let validRoles = ["estateTenant"];
+          let inValidItems = value.filter(val => !validRoles.includes(val));
+          if (inValidItems.length > 0) {
+            throw new Error("Invalid Role Type Specified");
+          }
+          return value;
+        }
+      },
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 5,
+      },
+    },
+    model: {
+      type: DataTypes.STRING,
+      defaultValue: "Estatetenants",
+    },
   };
   const EstateTenant = sequelize.define<
   EstateTenantInstance,
@@ -55,6 +81,6 @@ export const EstateTenantFactory = (
     EstateTenant.belongsTo(models.EstateAdmins);
   };
 //fire hooks
-  // EstateTenantsAfterCreate(EstateTenant);
+  EstateTenantsBeforeCreate(EstateTenant);
   return EstateTenant;
 };

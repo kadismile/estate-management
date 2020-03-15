@@ -1,6 +1,6 @@
 import * as Sequelize from "sequelize";
 import { SequelizeAttributes } from "../types/sequelizeAttributes";
-const { SubTenantsAfterCreate } =  require('../utils/hooks');
+const { SubTenantsBeforeCreate } =  require('../utils/hooks');
 import {
   SubTenantInstance,
   SubTenantAttributes
@@ -47,6 +47,32 @@ export const SubTenantFactory = (
       type: DataTypes.STRING,
       allowNull: false
     },
+    roles: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: ["subTenant"],
+      validate: {
+        isValidArray: function(value) {
+          let validRoles = ["subTenant"];
+          let inValidItems = value.filter(val => !validRoles.includes(val));
+          if (inValidItems.length > 0) {
+            throw new Error("Invalid Role Type Specified");
+          }
+          return value;
+        }
+      },
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        min: 5,
+      },
+    },
+    model: {
+      type: DataTypes.STRING,
+      defaultValue: "SubTenants",
+    },
   };
   const SubTenant = sequelize.define<
   SubTenantInstance,
@@ -57,6 +83,6 @@ export const SubTenantFactory = (
   };
 
   //fire hooks
-  // SubTenantsAfterCreate(SubTenant);
+  SubTenantsBeforeCreate(SubTenant);
   return SubTenant;
 };
