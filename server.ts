@@ -1,9 +1,11 @@
 require('dotenv').config();
 import express, { Request, Response } from 'express'
+var cors = require('cors');
 import { dropDb } from './seed/dropDB';
 const env = process.env.NODE_ENV || "development";
 
 const app = express();
+app.use(cors());
 //Body parser
 app.use(express.json());
 
@@ -18,6 +20,7 @@ app.use('/api/v1/sub-tenants', subTenants);
 app.use('/api/v1/transactions', transactions);
 app.use('/api/v1/sub-transactions', subTransactions);
 app.use('/api/v1/auth', auth);
+app.use('/api/v1/authenticate/', auth);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('ci with travis');
