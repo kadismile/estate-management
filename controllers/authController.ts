@@ -3,7 +3,7 @@ const errorHandler = require('../utils/errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const  { modelName } = require('../utils/helpers/modelname');
-const { findByEmail } =  require('../utils/helpers/query');
+const { findByEmail, findById } =  require('../utils/helpers/query');
 import {Request, Response} from 'express'
 
 exports.authLogin = async (req: Request, res: Response) => {
@@ -20,7 +20,7 @@ exports.authLogin = async (req: Request, res: Response) => {
   if (!email || !password) {
     res.status(403).json({
       success: false,
-      data: "Invalid Login Details"
+      data: "Invalid Login Details "
     });
   }
 
@@ -61,5 +61,33 @@ exports.authLogin = async (req: Request, res: Response) => {
   } catch (e) {
     errorHandler(e, res)
   }
-
 };
+
+exports.authUser = async (req: Request, res: Response) => {
+  let token;
+  try {
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith('Bearer')
+    ) {
+      token = req.headers.authorization.split(' ')[1];
+    }
+    if (!token) {
+      errorHandler('Not authorized to access this route', res)
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!decoded.id) {
+      errorHandler('Not authorized to access this route', res)
+    }
+
+    const resource = await findById(modelName(decoded.model), decoded.id);
+
+    res.status(200).json({
+      success: true,
+      data: resource
+    });
+  } catch (e) {
+    errorHandler('An Error Occurred', e)
+  }
+}
