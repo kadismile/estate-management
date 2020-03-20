@@ -11,6 +11,12 @@ const errorHandler = (err, res: Response) => {
         error = new ErrorResponse(message, 404)
     }
 
+    if (err.type === 'headers_error') {
+        let entity = err.entity || 'specific entity';
+        const message = `No ${entity} present in headers`;
+        error = new ErrorResponse(message, 404)
+    }
+
     if (err.name === 'SequelizeUniqueConstraintError') {
         const message = `Unique Entity Error`;
         error = new ErrorResponse(message, 404)
