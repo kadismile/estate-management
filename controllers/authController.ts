@@ -83,10 +83,9 @@ exports.authUser = async (req: Request, res: Response) => {
 
     const resource = await findById(modelName(decoded.model), decoded.id);
 
-    res.status(200).json({
-      success: true,
-      data: resource
-    });
+    res.status(200).json(
+      resource
+    );
   } catch (e) {
     errorHandler('An Error Occurred', e)
   }
