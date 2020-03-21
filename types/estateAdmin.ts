@@ -9,7 +9,7 @@ export interface EstateAdminAttributes {
     address: string;
     estateType: string;
     roles: string[];
-    password: string,
+    password?: string,
     model: string
 }
   

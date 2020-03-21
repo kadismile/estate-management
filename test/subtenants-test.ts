@@ -1,6 +1,5 @@
-import {SubTenantAttributes} from "../types/subTenants";
+import { SubTenantAttributes } from "../types/subTenants";
 const server = require("../server");
-
 
 import "mocha";
 import chai from "chai";
@@ -18,7 +17,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
       address: "24 Bansxheer Avenue",
       tenantType: "Flat Owner",
       account: 2000,
-      roles: ['subTenant'],
+      roles: ["subTenant"],
       password: "111222",
       model: "SubTenants"
     };
@@ -43,7 +42,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
       tenantType: "Flat Owner",
       estateTenantId: 1,
       account: 2500,
-      roles: ['subTenant'],
+      roles: ["subTenant"],
       password: "111222",
       model: "SubTenants"
     };
@@ -55,7 +54,7 @@ describe("Describe the basic nature of what are the series of test cases here", 
         chai.expect(res.status).to.eql(200); // expression which will be true if response status equal to 201
         chai.assert.exists(res.body.data.id); // assertion expression which will be true if id exists
         chai.expect(res.body.data).to.deep.include(update);
-        done()
+        done();
       });
   });
   it("Gets a Sub tenant by id", done => {
@@ -80,5 +79,4 @@ describe("Describe the basic nature of what are the series of test cases here", 
       })
       .catch(done);
   });
-
 });

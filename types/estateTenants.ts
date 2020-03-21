@@ -11,7 +11,7 @@ export interface EstateTenantAttributes {
     email: string;
     address: string;
     roles: string[];
-    password: string,
+    password?: string,
     model: string
   }
   
