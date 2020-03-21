@@ -1,7 +1,8 @@
+import { estateAdminTests } from "./estate-admin-test";
+import { estateTenantRouteAuthTests, estateTenantsTests } from "./tenants-test";
 
-//const estateAdminTest = require('./estate-admin-test');
-//const tenantTest = require('./tenants-test');
-
-//estateAdminTest;
-//tenantTest;
-
+(async function() {
+  await estateAdminTests();
+  await estateTenantRouteAuthTests();
+  await estateTenantsTests();
+})();

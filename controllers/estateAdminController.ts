@@ -1,16 +1,18 @@
 import models from "../models";
 const errorHandler = require("../utils/errors");
 import { Request, Response } from "express";
-const { findById, findAll, updateById } =  require('../utils/helpers/query');
+const { findById, findAll, updateById } = require("../utils/helpers/query");
 
 exports.createEstateAdmins = async (req: Request, res: Response) => {
   try {
     const estateAdmin = await models.EstateAdmins.create(req.body);
+    const { password, ...result } = estateAdmin.get({ plain: true });
     res.status(201).json({
       success: true,
-      data: estateAdmin
+      data: result
     });
   } catch (e) {
+    console.log("error!");
     console.log(e);
     errorHandler(e, res);
   }
@@ -32,7 +34,7 @@ exports.updateEstateAdminsById = async (req: Request, res: Response) => {
 exports.getEstateAdminsById = async (req: Request, res: Response) => {
   try {
     const estateAdmin = await findById(models.EstateAdmins, req.params.id);
-    if (estateAdmin === null) {
+    if (!estateAdmin) {
       res.status(404).json({
         success: false,
         data: "No estate admin found"
@@ -68,4 +70,3 @@ exports.getAllEstateAdmins = async (req: Request, res: Response) => {
     errorHandler(e, res);
   }
 };
-
